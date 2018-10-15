@@ -49,15 +49,19 @@ class Scoreboard extends React.Component {
 
 	render() {
 		return (
-			<Provider value={this.state.players}>
+			<Provider
+				value={{
+					players: this.state.players,
+					actions: {
+						updateScore: this.handleScoreUpdate,
+						removePlayer: this.handleRemove
+					}
+				}}
+			>
 				<div className="scoreboard">
 					<Header />
 					<div className="players">
-						<Player
-							increment={this.handleScoreUpdate}
-							decrement={this.handleScoreUpdate}
-							remove={this.handleRemove}
-						/>
+						<Player />
 
 						{/* Add player form  */}
 						<div className="add-player-form">

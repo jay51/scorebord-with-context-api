@@ -1,17 +1,20 @@
 import React from "react";
 import { Consumer } from "../context";
 
-const Player = props => {
+// note: you don't have to wrap everything with the consumer,
+// just the part that needs the data
+
+const Player = () => {
 	return (
 		<Consumer>
-			{players =>
-				players.map((player, index) => (
+			{context =>
+				context.players.map((player, index) => (
 					<div className="player" key={index}>
 						<div className="player-name">
 							{player.name}
 							<button
 								className="remove-player"
-								onClick={() => props.remove(index)}
+								onClick={() => context.actions.removePlayer(index)}
 							>
 								X
 							</button>
@@ -19,14 +22,14 @@ const Player = props => {
 						<div className="player-score">
 							<div className="counter">
 								<button
-									onClick={() => props.decrement(index, -1)}
+									onClick={() => context.actions.updateScore(index, -1)}
 									className="counter-action decrement"
 								>
 									-
 								</button>
 								<div className="counter-score">{player.score}</div>
 								<button
-									onClick={() => props.increment(index, 1)}
+									onClick={() => context.actions.updateScore(index, 1)}
 									className="counter-action increment"
 								>
 									+
