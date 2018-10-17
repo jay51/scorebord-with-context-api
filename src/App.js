@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ScoreBoard from "./component/ScoreBoard";
+import { Provider } from "./context";
 import "./App.css";
 
 class App extends Component {
@@ -9,8 +10,9 @@ class App extends Component {
 				<header className="App-header">
 					<h1 className="App-title">Score Tracker</h1>
 				</header>
-
-				<ScoreBoard />
+				<Provider>
+					<ScoreBoard />
+				</Provider>
 			</div>
 		);
 	}
