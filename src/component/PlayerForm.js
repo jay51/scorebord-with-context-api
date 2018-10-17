@@ -6,10 +6,10 @@ export default function PlayerForm() {
 
 	return (
 		<Consumer>
-			{context => {
+			{({ actions }) => {
 				function handleSubmit(e) {
 					e.preventDefault();
-					context.actions.addPlayer(playerInput.current.value);
+					actions.addPlayer(playerInput.current.value);
 					e.currentTarget.reset();
 				}
 

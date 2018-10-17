@@ -5,9 +5,9 @@ import { Consumer } from "../context";
 export default function Header() {
 	return (
 		<Consumer>
-			{context => {
-				let totalPlayers = context.players.length;
-				let totalPoint = context.players.reduce(
+			{({ players }) => {
+				let totalPlayers = players.length;
+				let totalPoint = players.reduce(
 					(points, player) => points + player.score,
 					0
 				);
